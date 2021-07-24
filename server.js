@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const campsiteRouter = require('./routes/campsiteRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -49,6 +50,8 @@ app.put('/campsites/:campsiteId', (req, res) => {
 app.delete('/campsites/:campsiteId', (req, res) => {
     res.end(`Deleting campsite: ${req.params.campsiteId}`);
 });
+
+app.use('/campsites', campsiteRouter);
 
 app.use(express.static(__dirname + '/public'));
 
